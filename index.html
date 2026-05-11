@@ -10,92 +10,89 @@
 body {
   background: repeating-conic-gradient(#ffeb3b 0% 25%, #ff9800 0% 50%) 0 0 / 60px 60px;
   font-family: 'Comic Neue', cursive;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  min-height:100vh; overflow:hidden;
+  display:flex; flex-direction:column; align-items:center;
+  min-height:100vh; overflow-x:hidden; padding:10px;
 }
 .comic-border {
-  border:6px solid #000;
-  border-radius:12px;
-  box-shadow: 8px 8px 0 #000;
-  background:#fff;
+  border:6px solid #000; border-radius:12px;
+  box-shadow: 8px 8px 0 #000; background:#fff;
 }
-.header {
-  text-align:center; margin-bottom:15px; padding:15px 30px;
+.header { text-align:center; margin-bottom:12px; padding:12px 25px;
   background: linear-gradient(135deg, #ff6b6b, #ffe66d, #4ecdc4);
   position:relative;
 }
 .header h1 {
-  font-family: 'Bangers', cursive;
-  font-size:3.5rem;
-  color:#fff;
-  text-shadow: 4px 4px 0 #000, -2px -2px 0 #000;
-  letter-spacing:3px;
-  transform: rotate(-2deg);
+  font-family: 'Bangers', cursive; font-size:3rem;
+  color:#fff; text-shadow: 4px 4px 0 #000, -2px -2px 0 #000;
+  letter-spacing:3px; transform: rotate(-2deg);
 }
 .header .subtitle {
-  font-size:1.2rem; color:#222; font-weight:bold;
-  background:#fff; display:inline-block; padding:4px 12px;
-  border:3px solid #000; transform:rotate(2deg); margin-top:5px;
+  font-size:1.1rem; color:#222; font-weight:bold;
+  background:#fff; display:inline-block; padding:3px 10px;
+  border:3px solid #000; transform:rotate(2deg); margin-top:4px;
   box-shadow:3px 3px 0 #000;
 }
-.score-box {
-  display:flex; gap:15px; margin-bottom:15px;
-}
+.score-box { display:flex; gap:12px; margin-bottom:12px; flex-wrap:wrap; justify-content:center; }
 .score-panel {
-  padding:10px 25px; text-align:center;
+  padding:8px 20px; text-align:center;
   background: linear-gradient(180deg, #4ecdc4, #44a08d);
-  font-family:'Bangers', cursive; font-size:1.3rem; color:#fff;
+  font-family:'Bangers', cursive; font-size:1.2rem; color:#fff;
   text-shadow:2px 2px 0 #000;
 }
-.score-panel span { display:block; font-size:0.9rem; font-family:'Comic Neue'; }
+.score-panel span { display:block; font-size:0.8rem; font-family:'Comic Neue'; }
 .btn {
-  font-family:'Bangers', cursive; font-size:1.2rem; padding:8px 20px;
+  font-family:'Bangers', cursive; font-size:1.1rem; padding:6px 16px;
   background:#ff6b6b; color:#fff; border:4px solid #000; cursor:pointer;
   box-shadow:4px 4px 0 #000; transition:all 0.1s;
 }
 .btn:active { transform:translate(2px,2px); box-shadow:2px 2px 0 #000; }
-.game-container {
-  position:relative; padding:15px; background:#333;
-}
+.game-wrap { position:relative; }
+.game-container { position:relative; padding:12px; background:#333; }
 .grid-bg {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:10px;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
   width:340px; height:340px;
 }
 .cell {
   width:72px; height:72px; border-radius:8px;
   background:#555; border:3px solid #222;
   display:flex; align-items:center; justify-content:center;
-  font-family:'Bangers', cursive; font-size:1.6rem;
+  font-family:'Bangers', cursive; font-size:2rem;
   color:#fff; text-shadow:2px 2px 0 #000;
   transition:all 0.15s cubic-bezier(0.4,0,0.2,1);
+  position:relative; overflow:hidden;
 }
+.cell-icon { font-size:2.2rem; }
+.cell-label { font-size:0.6rem; position:absolute; bottom:2px; font-family:'Comic Neue'; }
+
 .cell[data-val="2"] { background:linear-gradient(135deg,#ff9a9e,#fecfef); color:#000; text-shadow:none; }
 .cell[data-val="4"] { background:linear-gradient(135deg,#a18cd1,#fbc2eb); color:#000; text-shadow:none; }
 .cell[data-val="8"] { background:linear-gradient(135deg,#84fab0,#8fd3f4); }
 .cell[data-val="16"] { background:linear-gradient(135deg,#ffecd2,#fcb69f); color:#000; text-shadow:none; }
 .cell[data-val="32"] { background:linear-gradient(135deg,#f6d365,#fda085); color:#000; text-shadow:none; }
 .cell[data-val="64"] { background:linear-gradient(135deg,#ff6b6b,#ee5a6f); }
-.cell[data-val="128"] { background:linear-gradient(135deg,#667eea,#764ba2); font-size:1.4rem; }
-.cell[data-val="256"] { background:linear-gradient(135deg,#11998e,#38ef7d); font-size:1.4rem; }
-.cell[data-val="512"] { background:linear-gradient(135deg,#fc4a1a,#f7b733); font-size:1.4rem; }
-.cell[data-val="1024"] { background:linear-gradient(135deg,#f12711,#f5af19); font-size:1.2rem; }
-.cell[data-val="2048"] { background:linear-gradient(135deg,#00c6ff,#0072ff); font-size:1.2rem; animation:pulse 0.5s infinite alternate; }
-.cell[data-val="4096"] { background:linear-gradient(135deg,#8e2de2,#4a00e0); font-size:1.2rem; }
-.cell[data-val="8192"] { background:linear-gradient(135deg,#000,#434343); font-size:1.2rem; }
+.cell[data-val="128"] { background:linear-gradient(135deg,#667eea,#764ba2); }
+.cell[data-val="256"] { background:linear-gradient(135deg,#11998e,#38ef7d); }
+.cell[data-val="512"] { background:linear-gradient(135deg,#fc4a1a,#f7b733); }
+.cell[data-val="1024"] { background:linear-gradient(135deg,#f12711,#f5af19); }
+.cell[data-val="2048"] { background:linear-gradient(135deg,#00c6ff,#0072ff); animation:pulse 0.5s infinite alternate; }
+.cell[data-val="4096"] { background:linear-gradient(135deg,#8e2de2,#4a00e0); }
+.cell[data-val="8192"] { background:linear-gradient(135deg,#000,#434343); }
 
 @keyframes pulse { from { transform:scale(1); } to { transform:scale(1.08); } }
+.cell.pop { animation:pop 0.25s ease-out; }
+@keyframes pop { 0%{transform:scale(0.3);opacity:0;} 60%{transform:scale(1.2);} 100%{transform:scale(1);opacity:1;} }
 
-.cell.pop { animation:pop 0.2s ease-out; }
-@keyframes pop { 0%{transform:scale(0.5);} 70%{transform:scale(1.15);} 100%{transform:scale(1);} }
-
-.cell.merge-boom::after {
-  content:"💥"; position:absolute; font-size:2rem;
-  animation:boom 0.4s ease-out forwards; pointer-events:none;
+.particle {
+  position:absolute; pointer-events:none; font-size:1.5rem;
+  animation:particleFly 0.6s ease-out forwards; z-index:100;
 }
-@keyframes boom { 0%{opacity:1;transform:scale(0.5);} 100%{opacity:0;transform:scale(2);} }
+@keyframes particleFly {
+  0% { transform:translate(0,0) scale(1); opacity:1; }
+  100% { transform:translate(var(--px), var(--py)) scale(0); opacity:0; }
+}
 
 .overlay {
-  position:absolute; inset:0; background:rgba(0,0,0,0.85);
+  position:absolute; inset:0; background:rgba(0,0,0,0.88);
   display:none; flex-direction:column; align-items:center; justify-content:center;
   border-radius:12px; z-index:10;
 }
@@ -103,39 +100,50 @@ body {
 .overlay h2 {
   font-family:'Bangers',cursive; font-size:3rem; color:#ffe66d;
   text-shadow:4px 4px 0 #ff6b6b, -2px -2px 0 #000;
-  margin-bottom:15px; transform:rotate(-3deg);
+  margin-bottom:12px; transform:rotate(-3deg);
 }
 .speech-bubble {
   background:#fff; border:4px solid #000; border-radius:20px;
-  padding:15px 25px; position:relative; margin-bottom:20px;
-  font-family:'Comic Neue',cursive; font-size:1.2rem; font-weight:bold;
-  box-shadow:5px 5px 0 #000;
+  padding:12px 20px; position:relative; margin-bottom:15px;
+  font-family:'Comic Neue',cursive; font-size:1.1rem; font-weight:bold;
+  box-shadow:5px 5px 0 #000; max-width:280px; text-align:center;
 }
 .speech-bubble::after {
-  content:''; position:absolute; bottom:-20px; left:50%; transform:translateX(-50%);
-  border:10px solid transparent; border-top-color:#000;
+  content:''; position:absolute; bottom:-18px; left:50%; transform:translateX(-50%);
+  border:9px solid transparent; border-top-color:#000;
 }
+.leaderboard {
+  background:#fff; border:4px solid #000; border-radius:12px;
+  padding:10px 15px; margin-bottom:12px; min-width:200px;
+  box-shadow:4px 4px 0 #000;
+}
+.leaderboard h3 { font-family:'Bangers'; font-size:1.2rem; text-align:center; margin-bottom:6px; }
+.leaderboard-row { display:flex; justify-content:space-between; font-size:0.95rem; padding:3px 0; border-bottom:1px dashed #ccc; }
+.leaderboard-row.top { background:#ffe66d; font-weight:bold; padding:3px 5px; margin:0 -5px; }
+
 .controls-hint {
-  margin-top:10px; font-size:0.95rem; color:#333; font-weight:bold;
-  background:#fff; padding:8px 15px; border:3px solid #000;
+  margin-top:8px; font-size:0.85rem; color:#333; font-weight:bold;
+  background:#fff; padding:6px 12px; border:3px solid #000;
   box-shadow:3px 3px 0 #000; transform:rotate(1deg);
 }
 .mobile-btns {
-  display:none; grid-template-columns:repeat(3,1fr); gap:8px;
-  margin-top:15px; width:220px;
+  display:none; grid-template-columns:repeat(3,1fr); gap:6px;
+  margin-top:10px; width:200px;
 }
 .mobile-btns button {
-  font-family:'Bangers',cursive; font-size:1.5rem; padding:12px;
+  font-family:'Bangers',cursive; font-size:1.4rem; padding:10px;
   background:#4ecdc4; border:4px solid #000; box-shadow:3px 3px 0 #000;
   cursor:pointer;
 }
 .mobile-btns button:active { transform:translate(2px,2px); box-shadow:1px 1px 0 #000; }
 .mobile-btns .empty { visibility:hidden; }
+.toggle-skin { margin-bottom:8px; }
 
 @media (max-width:500px) {
-  .header h1 { font-size:2.5rem; }
-  .grid-bg { width:300px; height:300px; }
-  .cell { width:60px; height:60px; font-size:1.3rem; }
+  .header h1 { font-size:2.2rem; }
+  .grid-bg { width:300px; height:300px; gap:6px; }
+  .cell { width:60px; height:60px; font-size:1.6rem; }
+  .cell-icon { font-size:1.8rem; }
   .mobile-btns { display:grid; }
 }
 </style>
@@ -144,65 +152,107 @@ body {
 
 <div class="header comic-border">
   <h1>💥 COMIC 2048</h1>
-  <div class="subtitle">🎨 Chico & Pupsa Edition</div>
+  <div class="subtitle">🦸 Chico & Pupsa Edition</div>
 </div>
 
 <div class="score-box">
   <div class="score-panel comic-border"><span>SCORE</span><div id="score">0</div></div>
   <div class="score-panel comic-border"><span>BEST</span><div id="best">0</div></div>
-  <button class="btn comic-border" onclick="newGame()">NEW GAME</button>
+  <button class="btn comic-border" onclick="toggleSkin()">🎨 SKIN</button>
+  <button class="btn comic-border" onclick="newGame()">NEW</button>
 </div>
 
-<div class="game-container comic-border">
-  <div class="grid-bg" id="grid"></div>
-  <div class="overlay" id="overlay">
-    <h2 id="msg">GAME OVER!</h2>
-    <div class="speech-bubble" id="bubble">Попробуй ещё раз, герой!</div>
-    <button class="btn comic-border" onclick="newGame()">PLAY AGAIN</button>
+<div class="game-wrap">
+  <div class="game-container comic-border">
+    <div class="grid-bg" id="grid"></div>
+    <div class="overlay" id="overlay">
+      <h2 id="msg">GAME OVER!</h2>
+      <div class="speech-bubble" id="bubble">Попробуй ещё раз, герой!</div>
+      <div class="leaderboard" id="lb"></div>
+      <button class="btn comic-border" onclick="newGame()">PLAY AGAIN</button>
+    </div>
   </div>
 </div>
 
 <div class="mobile-btns">
-  <div class="empty"></div>
-  <button onclick="move('up')">⬆️</button>
-  <div class="empty"></div>
+  <div class="empty"></div><button onclick="move('up')">⬆️</button><div class="empty"></div>
   <button onclick="move('left')">⬅️</button>
   <button onclick="move('down')">⬇️</button>
   <button onclick="move('right')">➡️</button>
 </div>
 
 <div class="controls-hint comic-border">
-  🖥️ WASD / Стрелки | 📱 Свайпы / Кнопки ниже
+  🖥️ WASD / Стрелки | 📱 Свайпы / Кнопки | 🎨 Кнопка SKIN
 </div>
 
 <script>
+/* ===== AUDIO ===== */
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+let audioCtx;
+function initAudio(){ if(!audioCtx) audioCtx = new AudioCtx(); }
+function playTone(freq, type='square', duration=0.12, vol=0.08){
+  if(!audioCtx) return;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = type; osc.frequency.value = freq;
+  gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+  osc.connect(gain); gain.connect(audioCtx.destination);
+  osc.start(); osc.stop(audioCtx.currentTime + duration);
+}
+function sfxMove(){ playTone(220, 'sine', 0.06, 0.04); }
+function sfxMerge(val){
+  const base = 300 + Math.log2(val)*80;
+  playTone(base, 'square', 0.18, 0.1);
+  setTimeout(()=>playTone(base*1.25, 'square', 0.14, 0.08), 80);
+}
+function sfxWin(){
+  [523,659,784,1047].forEach((f,i)=>setTimeout(()=>playTone(f,'square',0.25,0.12),i*120));
+}
+function sfxLose(){
+  [400,350,300,200].forEach((f,i)=>setTimeout(()=>playTone(f,'sawtooth',0.3,0.1),i*150));
+}
+
+/* ===== SKINS ===== */
+let skinMode = 'chico'; // 'chico' | 'classic'
+const SKINS = {
+  chico: {
+    2:   {icon:'🦸', label:'Чико', color:'#ff9a9e'},
+    4:   {icon:'🖨️', label:'Пупса', color:'#a18cd1'},
+    8:   {icon:'🧵', label:'Филамент', color:'#84fab0'},
+    16:  {icon:'🎨', label:'Краска', color:'#ffecd2'},
+    32:  {icon:'🔧', label:'Сопло', color:'#f6d365'},
+    64:  {icon:'⚙️', label:'Шестерня', color:'#ff6b6b'},
+    128: {icon:'🏭', label:'Фабрика', color:'#667eea'},
+    256: {icon:'🚀', label:'Ракета', color:'#11998e'},
+    512: {icon:'👑', label:'Король', color:'#fc4a1a'},
+    1024:{icon:'💎', label:'Алмаз', color:'#f12711'},
+    2048:{icon:'🔥', label:'LEGEND', color:'#00c6ff'},
+    4096:{icon:'🌟', label:'GOD', color:'#8e2de2'},
+    8192:{icon:'🎭', label:'BOSS', color:'#000'},
+  },
+  classic: {
+    2:'2',4:'4',8:'8',16:'16',32:'32',64:'64',
+    128:'128',256:'256',512:'512',1024:'1024',2048:'2048',4096:'4096',8192:'8192'
+  }
+};
+function toggleSkin(){ skinMode = skinMode==='chico'?'classic':'chico'; draw(); }
+
+/* ===== GAME ===== */
 let board, score, best=parseInt(localStorage.getItem('comic2048best')||0);
+let scores = JSON.parse(localStorage.getItem('comic2048scores')||'[]');
 const gridEl=document.getElementById('grid');
 const scoreEl=document.getElementById('score');
 const bestEl=document.getElementById('best');
 const overlay=document.getElementById('overlay');
 const msg=document.getElementById('msg');
 const bubble=document.getElementById('bubble');
+const lbEl=document.getElementById('lb');
 
-const phrasesWin=[
-  "2048! Ты настоящий герой! 🦸",
-  "BOOM! Мозг взорвался от крутости! 💥",
-  "Чико гордится тобой! 🎉",
-  "Пупса аплодирует стоя! 👏"
-];
-const phrasesLose=[
-  "Ой-ой, злодей победил! 😢",
-  "Не сдавайся, герой! 🦸",
-  "Попробуй ещё раз, Чико верит в тебя! 💪",
-  "Даже супергерои падают — и встают! 🚀"
-];
+const phrasesWin=["2048! Ты настоящий герой! 🦸","BOOM! Мозг взорвался! 💥","Чико гордится тобой! 🎉","Пупса аплодирует стоя! 👏","LEGENDARY! 🔥"];
+const phrasesLose=["Ой-ой, злодей победил! 😢","Не сдавайся, герой! 💪","Попробуй ещё раз! 🚀","Даже супергерои падают — и встают! 🦸"];
 
-function init(){
-  board=Array(4).fill().map(()=>Array(4).fill(0));
-  score=0; bestEl.textContent=best;
-  addRandom(); addRandom(); draw();
-}
-
+function init(){ board=Array(4).fill().map(()=>Array(4).fill(0)); score=0; bestEl.textContent=best; addRandom(); addRandom(); draw(); }
 function addRandom(){
   const empty=[];
   for(let r=0;r<4;r++)for(let c=0;c<4;c++)if(!board[r][c])empty.push([r,c]);
@@ -216,9 +266,16 @@ function draw(){
   gridEl.innerHTML='';
   for(let r=0;r<4;r++){
     for(let c=0;c<4;c++){
-      const d=document.createElement('div');
-      d.className='cell';
-      if(board[r][c]){ d.textContent=board[r][c]; d.dataset.val=board[r][c]; }
+      const d=document.createElement('div'); d.className='cell';
+      const v=board[r][c];
+      if(v){
+        d.dataset.val=v;
+        if(skinMode==='chico' && SKINS.chico[v]){
+          d.innerHTML = `<div class="cell-icon">${SKINS.chico[v].icon}</div><div class="cell-label">${SKINS.chico[v].label}</div>`;
+        } else {
+          d.textContent = v;
+        }
+      }
       gridEl.appendChild(d);
     }
   }
@@ -226,10 +283,30 @@ function draw(){
   if(score>best){best=score; bestEl.textContent=best; localStorage.setItem('comic2048best',best);}
 }
 
+function spawnParticles(r,c,val){
+  const cell = gridEl.children[r*4+c];
+  const rect = cell.getBoundingClientRect();
+  const container = document.querySelector('.game-container');
+  const cRect = container.getBoundingClientRect();
+  const icons = ['💥','✨','🎉','🔥','⭐','🚀'];
+  for(let i=0;i<6;i++){
+    const p=document.createElement('div');
+    p.className='particle'; p.textContent=icons[Math.floor(Math.random()*icons.length)];
+    p.style.left = (rect.left - cRect.left + rect.width/2) + 'px';
+    p.style.top = (rect.top - cRect.top + rect.height/2) + 'px';
+    const angle = (Math.PI*2/6)*i;
+    p.style.setProperty('--px', Math.cos(angle)*60+'px');
+    p.style.setProperty('--py', Math.sin(angle)*60+'px');
+    container.appendChild(p);
+    setTimeout(()=>p.remove(), 600);
+  }
+}
+
 function slideRowLeft(row){
   let arr=row.filter(x=>x);
+  let mergedAt=-1;
   for(let i=0;i<arr.length-1;i++){
-    if(arr[i]===arr[i+1]){ arr[i]*=2; score+=arr[i]; arr[i+1]=0; }
+    if(arr[i]===arr[i+1] && i!==mergedAt){ arr[i]*=2; score+=arr[i]; arr[i+1]=0; mergedAt=i; sfxMerge(arr[i]); }
   }
   arr=arr.filter(x=>x);
   while(arr.length<4)arr.push(0);
@@ -242,12 +319,13 @@ function moveUp(){ let moved=false; for(let c=0;c<4;c++){ let col=[board[0][c],b
 function moveDown(){ let moved=false; for(let c=0;c<4;c++){ let col=[board[0][c],board[1][c],board[2][c],board[3][c]]; const old=[...col]; col.reverse(); col=slideRowLeft(col); col.reverse(); if(old.join()!==col.join())moved=true; for(let r=0;r<4;r++)board[r][c]=col[r]; } return moved; }
 
 function move(dir){
+  initAudio();
   let moved=false;
   if(dir==='left')moved=moveLeft();
   else if(dir==='right')moved=moveRight();
   else if(dir==='up')moved=moveUp();
   else if(dir==='down')moved=moveDown();
-  if(moved){ addRandom(); draw(); checkStatus(); }
+  if(moved){ sfxMove(); addRandom(); draw(); checkStatus(); }
 }
 
 function checkStatus(){
@@ -261,12 +339,25 @@ function checkStatus(){
 function showWin(){
   msg.textContent="YOU WIN! 🏆"; msg.style.color="#ffe66d";
   bubble.textContent=phrasesWin[Math.floor(Math.random()*phrasesWin.length)];
-  overlay.classList.add('show');
+  sfxWin(); showLeaderboard(); overlay.classList.add('show');
 }
 function showGameOver(){
   msg.textContent="GAME OVER!"; msg.style.color="#ff6b6b";
   bubble.textContent=phrasesLose[Math.floor(Math.random()*phrasesLose.length)];
-  overlay.classList.add('show');
+  sfxLose(); saveScore(); showLeaderboard(); overlay.classList.add('show');
+}
+function saveScore(){
+  scores.push({score,date:new Date().toLocaleDateString('ru')});
+  scores.sort((a,b)=>b.score-a.score); scores=scores.slice(0,10);
+  localStorage.setItem('comic2048scores', JSON.stringify(scores));
+}
+function showLeaderboard(){
+  if(!scores.length){ lbEl.innerHTML='<h3>🏆 TOP SCORES</h3><div class="leaderboard-row">Пока пусто!</div>'; return; }
+  let html='<h3>🏆 TOP SCORES</h3>';
+  scores.slice(0,5).forEach((s,i)=>{
+    html+=`<div class="leaderboard-row ${i===0?'top':''}">${i+1}. ${s.score} pts <span>${s.date}</span></div>`;
+  });
+  lbEl.innerHTML=html;
 }
 
 function newGame(){ overlay.classList.remove('show'); init(); }
